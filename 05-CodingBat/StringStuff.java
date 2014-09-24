@@ -16,6 +16,7 @@ public class StringStuff {
 	return Math.abs((21 - n) * 2);
     }
     //WORKING
+    //Assitance from Camille
 
     public String makeAbba(String a, String b) {
 	return a+b+b+a;

@@ -10,5 +10,10 @@ public class Driver {
 	System.out.println("k.nonStart(hello , world) ==>"+k.nonStart("hello" , "world"));
 	System.out.println("k.diff21(74) ==>"+k.diff21(74));
 	System.out.println("k.makeAbba(aaaa,bbbb) ==> "+k.makeAbba("aaaa" , "bbbb"));
+
+	System.out.println("after the lab in class, we now have nearHundred, mixstart, teaparty, and lastDigit");
+	System.out.println("k.nearHundred(93) ==>"+k.nearHundred(93));
+	System.out.println("k.mixstart(mix snacks) ==>"+k.mixstart(mix snacks));
+	System.out.println("k.teaParty(3,8) ==>"+k.mixstart(mix snacks));
     }
 }
