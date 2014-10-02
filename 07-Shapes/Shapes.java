@@ -45,11 +45,47 @@ public class Shapes {
 	    }
 	    while(c3 > 0) {
 		ans+="*";
-	    c3-=1;}
+		c3-=1;}
 	ans+="\n";
      }  
 	return ans;
      }
+
+
+
+    public String tri3( int h ) {
+	int stars = 1;
+	int spaces = h - 1;
+	String ans = "";
+	int rows = 0;
+	int stars2 = 0;
+	while (rows < h) {
+	    while (spaces > 0) {
+		ans = ans + " ";
+		spaces = spaces - 1;
+	    }
+	    spaces= h - stars;
+	    stars2 = stars;
+	    while (stars > 0) {
+		ans = ans + "*";
+		stars = stars - 1;
+	    }
+	    stars = stars2;
+	    while (spaces > 0) {
+		ans = ans + " ";
+		spaces = spaces - 1;
+	    }
+	    ans = ans + "\n";
+	    rows = rows + 1;
+	    stars = stars + 2 ;
+	    spaces = spaces - 1;
+		
+		}
+	return ans;
+    }
+	    
+	
+
 }
 
 

@@ -7,5 +7,6 @@ public class Driver {
 	System.out.println(s.tri1(4));
 	System.out.println("Another new shape");
 	System.out.println(s.tri2(4));
+	System.out.println(s.tri3(5));
     }
 }
