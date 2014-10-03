@@ -51,41 +51,114 @@ public class Shapes {
 	return ans;
      }
 
-
+    //help from eric
 
     public String tri3( int h ) {
+        int rowlength = (2*h) - 1;
 	int stars = 1;
-	int spaces = h - 1;
+	int spaces = (rowlength - 1)/2;
+	
 	String ans = "";
-	int rows = 0;
-	int stars2 = 0;
-	while (rows < h) {
-	    while (spaces > 0) {
-		ans = ans + " ";
-		spaces = spaces - 1;
-	    }
-	    spaces= h - stars;
-	    stars2 = stars;
-	    while (stars > 0) {
-		ans = ans + "*";
-		stars = stars - 1;
-	    }
-	    stars = stars2;
-	    while (spaces > 0) {
-		ans = ans + " ";
-		spaces = spaces - 1;
-	    }
-	    ans = ans + "\n";
-	    rows = rows + 1;
-	    stars = stars + 2 ;
-	    spaces = spaces - 1;
-		
-		}
-	return ans;
-    }
-	    
 	
 
+	while (stars < (h+1)) {
+	    int spaces2 = spaces;
+	    while (spaces2 > 0){
+		ans = ans + " ";
+		spaces = spaces - 1;
+	    }
+	    int stars2 = stars;
+	    while (stars2 > 0) {
+		ans = ans + "*";
+		stars2 = stars2 - 1;
+	    }
+	    int spaces3 = spaces;
+	    while (spaces3 > 0) {
+		ans = ans + " ";
+		spaces3 = spaces3 - 1;
+	    }
+	    spaces = spaces - 2;
+	    stars = stars + 1;
+	    ans = ans + "\n";
+	}
+	return ans;
+    }
+    
+    public String diamond(int h ) {
+	int middle = (h - 1) / 2 + 1;
+	String ans = "";
+	int rows = h;
+	int row;
+	int spaces;
+	int stars;
+	String Spaces;
+	String stars;
+	
+	for(row = 1; row < middle ; row +=1) {
+	    
+	    spaces = middle - 1;
+	    
+	    for (spaces;spaces > 0 ;spaces-=1) {
+		Spaces+=" ";
+		
+            }
+	    for (stars = 1; stars > 0; stars-=1) {
+		Stars+="*";
+	    }
+	    ans = ans + Spaces + Stars + Spaces;
+	    Spaces = Spaces.substring(0, Spaces.length()-1);
+	    Stars = Stars + "*";
+	    ans +="\n";
+	    
+	}
+	ans += Stars;
+	for (row = middle; row < h ; row +=1) {
+	    
+	    
+	    Stars = Stars.substring(0, Stars.length() - 1);
+	    Spaces = Spaces + " ";
+	    
+	    
+	    
+	    ans += Spaces + Stars + Spaces+"\n";
+	    row +=1;
+	    
+	    
+	}
+	return ans;
+    }
+    
+    
+    
+    
+    public String tri4(int h){
+	int star;
+	int space2;
+	int star;
+	int star2;
+	String ans = "";
+	for (star = h; star > 0;star = star -1) {
+	    space = h - star;
+	    
+	    
+	    for(space2 = space; space2 > 0;space2-= 1) {
+		ans = ans + " ";
+	    }
+	    
+
+	    for(star2 = star;star2 > 0; star2 = star2 -1){
+		ans += "*";
+	    }
+	    ans += "\n";
+	}
+	return ans;
+    }
+    
+    
 }
+
+
+
+
 
 
