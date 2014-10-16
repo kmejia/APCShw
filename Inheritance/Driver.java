@@ -27,6 +27,15 @@ public class Driver {
 	b2 = m2;
 	b2 = new Warrior();
 	
+
+	w.setName("Groo");
+	m.setName("Mr.Sage");
+	
+	w.attack(m);
+	m.attack(w);
+	attck(w);
+	Warrior w = new Warrior("Groo");
+	System.out.println(w);
     }
     
 
