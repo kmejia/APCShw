@@ -3,7 +3,7 @@ public class Arrays {
     public int[] frontPiece(int[] nums) {
 	
 	if (nums.length > 2){
-	    return nums(0, 2);
+	    return Arrays.copyOfRange(nums 0 , 2);
 	} 
 	else {return nums;}
 	
