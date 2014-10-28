@@ -29,7 +29,7 @@ public class Arraystuff {
     public int find(int value) {
 	Arraystuff a = new Arraystuff();
 	for (int i = 0;i<a.length;i++) {
-	    if (value.equals(a[i])){
+	    if (value==a[i]){
 	    return i;
 	    }
 	}
