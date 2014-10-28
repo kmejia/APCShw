@@ -16,10 +16,10 @@ public class Arraystuff {
     public Arraystuff() {
 	this(100);
     }
-    
+    //methods ------------------------------------------------
     
     public String toString() {
-	String s = ""+a.length;
+	String s = "";
 	for (int i = 0 ;i < a.length;i++) {
 	    s = s+ a[i] +"";
 	} 
@@ -27,11 +27,29 @@ public class Arraystuff {
     }
     ////hw-------------------------------------------------/-////
     public int find(int value) {
-	for (int i = 0;
+	Arraystuff a = new Arraystuff();
+	for (int i = 0;i<a.length;i++) {
+	    if (value.equals(a[i])){
+	    return i;
+	    }
+	}
 	return -1;
-
-
     }
+    public int MaxVal() {
+	Arraystuff a = new Arraystuff();
+
+	if (as.length==1) {return "no max";}
+	int maxs = as[0];
+	for (int i = 0 ;i<a.length;i++) {
+	    if (a[i] > maxs) {
+		maxs = a[i];
+	    }
+
+	}
+	return maxs;
+	
+
+    }	
 
 
 
@@ -42,5 +60,10 @@ public class Arraystuff {
 	Arraystuff as = new Arraystuff();
 	System.out.println(as);
 	//give it a main to test if it works
+
+	System.out.println(as.find(24));
+
+	System.out.println(as.MaxVal());
+	
     }
 }
