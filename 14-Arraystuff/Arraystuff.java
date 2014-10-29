@@ -135,8 +135,28 @@ public class Arraystuff {
 	}
 	return false;
     }
+    //another helper-----------
+    public int[] group(int n) {
+	int place = 1;
+	int[] ans = int[n];
+	while (place <=n){
+	    ans[place] = place;
+	    place+=1;
+	}
+	return ans;
+    }
     
     
+    public int[] seriesUp(int n) {
+	int[] ans = new int
+	    for (int place =0;place <= n;  place++) {
+		
+		
+	    }
+    }
+    
+    
+    //ArrayUtils.addAll(first, second)  
     
 
     
