@@ -106,6 +106,40 @@ public class Arraystuff {
 	}
 	return false;
     }
+    //2 helpers for the below fxn
+    public int sumFront(int[] nums , int i) {
+	int ans = 0;
+	if (i==0) {return nums[i];}
+	else{ for (int place = 0 ; place<=i;place++) {
+		ans +=nums[place];                              
+	    }       
+	} 
+	return ans;                  
+    }
+    public int sumBack(int[] nums , int i) {
+	int ans = 0;
+	if (i == nums.length-1) {return nums[i];}
+	else { for (int place = i+1; place<nums.length;place++)
+		ans +=nums[place];
+	}
+	return ans;
+    }
+    
+    public boolean canBalance(int[] nums) {
+	if (nums.length==1) {return false;}
+	for (int i = 0;i<nums.length;i++) {
+	    if (sumFront( nums , i)==sumBack( nums ,  i)) {
+		return true;
+	    }
+	    
+	}
+	return false;
+    }
+    
+    
+    
+
+    
     public static void main(String[] args) {
 	//this is perfectly fine, making an instance within itself
 	Arraystuff as = new Arraystuff();
