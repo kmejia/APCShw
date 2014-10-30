@@ -138,26 +138,52 @@ public class Arraystuff {
     //another helper-----------
     public int[] group(int n) {
 	int place = 1;
-	int[] ans = int[n];
-	while (place <=n){
-	    ans[place] = place;
+        int index = 0;
+	int[] ans = new int[n+1];
+	while (place <=n+1){
+	    ans[index] = place;
 	    place+=1;
+            index+=1;
 	}
 	return ans;
     }
     
     
     public int[] seriesUp(int n) {
-	int[] ans = new int
-	    for (int place =0;place <= n;  place++) {
-		
-		
-	    }
+	int[] ans = new int[1];
+	ans[0] = 1;
+	for (int place =1;place <= n;  place++) {
+            ans = ArrayUtils.addAll(ans , group(place));
+	    
+	    
+	}
+	return ans;
+    }  
+    
+
+    //problem given in class
+    public int freq(int i) {
+	int[] freq = new int[MaxVal()];
+	for (int in = 0;i<a.length;i++) {
+	    freq[in] = freq[in] + 1;
+	    
+
+	}
+	return freq[a[i]];
+
     }
-    
-    
-    //ArrayUtils.addAll(first, second)  
-    
+
+
+
+
+
+
+
+
+
+
+
+
 
     
     public static void main(String[] args) {
