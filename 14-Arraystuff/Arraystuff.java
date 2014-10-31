@@ -135,8 +135,8 @@ public class Arraystuff {
 	}
 	return false;
     }
-    //another helper-----------
-    public int[] group(int n) {
+    //another helper-----------Not the working version
+    /*public int[] group(int n) {
 	int place = 1;
         int index = 0;
 	int[] ans = new int[n+1];
@@ -159,7 +159,7 @@ public class Arraystuff {
 	}
 	return ans;
     }  
-    
+    */
 
     //problem given in class
     public int freq(int i) {
@@ -177,10 +177,37 @@ public class Arraystuff {
 
 
 
+    //hw from 10/30---------------------------------------------------
+    //working version of seriesUp(int n)
+    public int[] seriesUp(int n) {
+	int[] ans = new int[n*(n+1)/2];
+	int i = 0;
+	for (int counter = 1;counter<=n;counter++) {
+	    int counter2 = 1;
+	    while (counter2<=counter) {
+		ans[i] = counter2;
+		i++;
+		counter2++;
+	    }
+	}
+	return ans;
+    }
+    
+    /*
+My algorithm for maxMirror
 
+-have a helper that returns the reverse of an array
+-create as many possible arrays within the given array, a 4 element array has 5 posible groupings, therefore 10 in total. We find when we gave a group and its reverse within a list. The only problem I have is a way to form all those groups within an array, compare them, but at the same time keep doing so to find the largest possible group.
 
-
-
+  */
+   
+    public int[] rev(int [] nums) {
+ int[] rev = new int[nums.length];
+  for (int i=0;i<nums.length;i++) {
+    rev[i] = nums[nums.length - 1 - i];
+  }
+  return rev;
+    }
 
 
 
