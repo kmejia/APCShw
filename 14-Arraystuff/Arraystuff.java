@@ -1,5 +1,5 @@
 import java.util.*;
-
+import java.io.*;
 public class Arraystuff {
     private int[] a;
     private Random rnd;
@@ -8,7 +8,7 @@ public class Arraystuff {
 
     //constructors
     public Arraystuff(int n) {
-	a =new int[n];
+	int[] a =new int[n];
 	for (int i =0;i<a.length;i++) {
 	    a[i] = 75 + rnd.nextInt(76);
 	}
@@ -49,8 +49,22 @@ public class Arraystuff {
 	return maxs;
 	
 
-    }	
+    }
+    public int MaxVal(int[] A) {
+	//Arraystuff a = new Arraystuff();
 
+	if (a.length==1) {return A[0];}
+	int maxs = A[0];
+	for (int i = 0 ;i<A.length;i++) {
+	    if (A[i] > maxs) {
+		maxs = A[i];
+	    }
+
+	}
+	return maxs;
+	
+
+    }
 
 
     //HW14b-------------------------------------------////////////////////    
@@ -194,11 +208,11 @@ public class Arraystuff {
     }
     
     /*
-My algorithm for maxMirror
-
--have a helper that returns the reverse of an array
--create as many possible arrays within the given array, a 4 element array has 5 posible groupings, therefore 10 in total. We find when we gave a group and its reverse within a list. The only problem I have is a way to form all those groups within an array, compare them, but at the same time keep doing so to find the largest possible group.
-
+      My algorithm for maxMirror
+      
+      -have a helper that returns the reverse of an array
+      -create as many possible arrays within the given array, a 4 element array has 5 posible groupings, therefore 10 in total. We find when we gave a group and its reverse within a list. The only problem I have is a way to form all those groups within an array, compare them, but at the same time keep doing so to find the largest possible group.
+      
   */
    
     public int[] rev(int [] nums) {
@@ -208,9 +222,14 @@ My algorithm for maxMirror
   }
   return rev;
     }
-
-
-
+    ////////tally system of inding mode
+    public int mode(int[] A) {
+	int[] count = new int[MaxVal(A)];
+	for (int i = 0;i<A.length;i++) {
+	    count[A[i]] = count [A[i]] + 1;
+	}
+	return find(MaxVal(count));
+    }
 
     
     public static void main(String[] args) {
