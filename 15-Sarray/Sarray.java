@@ -21,8 +21,8 @@ public class Sarray {
 		try {
 			if (size() == data.length){
 			    int[] buffer = new int[data.length + 1];//buffer is essentially the new data
-				for (int i = 0; i < data.length; i++){
-					buffer[i] = data[i];
+				for (int n = 0; i < data.length; n++){
+					buffer[n] = data[n];
 				}
 				buffer[data.length] = i;
 				data = buffer;
@@ -49,7 +49,7 @@ public class Sarray {
 				if (i < index){
 					buffer[i] = data[i];
 				}
-				else if (i == indek){
+				else if (i == index){
 					buffer[i] = k;
 				}
 				else {
@@ -90,7 +90,7 @@ public class Sarray {
     	public int remove(int index){
         	// removes the item at index i
         	// returns the old value
-		int[] buffer = new Object[size() - 1];
+		int[] buffer = new int[size() - 1];
 		int toReturn;
 		for (int i = 0; i < buffer.length; i++){
 			if (i < index){
