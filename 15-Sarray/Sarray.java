@@ -41,7 +41,7 @@ public class Sarray {
 
     	public void add(int index, int k){
         	// adds item i  at index, shifting everything down as needed.
-        	// also grows as needed
+        	// also grows as needed 
 		if (last < index) {last = index - 1;} //Grow!
 		int[] buffer = new int[last + 1]; 
 		try{
