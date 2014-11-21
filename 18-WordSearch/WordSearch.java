@@ -85,6 +85,61 @@ public class WordSearch{
 	}
     }
 
+    ///18b____________________________________________________________
+    ///_D is adding it downward
+    public boolean canAdd_D(String w , int row, int col) {
+	
+	boolean ans = true; 
+	int x = row;
+	int y = col;
+	try{
+	    for(int i =0;i<w.length();i++) {
+		ans = (ans && ( (board[x][y] == '.')||( board[x][y]==w.charAt(i) )  )    );
+		x++;
+	    }
+	    
+
+	    return ans;}
+	
+	catch(Exception e) {return false;}
+    }
+    public void addWordV_D(String w,int row, int col){
+	int r = row, c = col;
+	if (  (canAdd_F(w,row,col)) ) {
+	    for (int i=0;i<w.length();i++){
+		board[r][c] = w.charAt(i);
+		r++;
+	    }
+	}
+    }
+ 
+
+    //_U is adding it upwards_______________________________________
+    public boolean canAdd_U(String w, int row, int col) {
+	boolean ans = true; 
+	int x = row;
+	int y = col;
+	try{
+	    for(int i =0;i<w.length();i++) {
+		ans = (ans && ( (board[x][y] == '.')||( board[x][y]==w.charAt(i) )  )    );
+		x--;
+	    }
+	    
+
+	    return ans;}
+	
+	catch(Exception e) {return false;}
+    }
+    public void addWordV_U(String w,int row, int col){
+	int r = row, c = col;
+	if (  (canAdd_F(w,row,col)) ) {
+	    for (int i=0;i<w.length();i++){
+		board[r][c] = w.charAt(i);
+		r--;
+	    }
+	}
+    }
+ 
 
     public static void main(String[] args) {
 	WordSearch w = new WordSearch();
@@ -107,6 +162,12 @@ public class WordSearch{
 	w.addWordH_B("hello",0,9);
 	w.addWordH_B("racecar",11,20);
 	w.addWordH_B("bar" , 11,22);
+	//vertical tests
+	w.addWordV_U("plank",10,0);
+	w.addWordV_D("Stuyvesant",0,19);
+	w.addWordV_D("BxSci",0,19);
+	w.addWordV_D("wannabe",8,4);
+	
 	System.out.println(w);
 	System.out.println("after--------------");
     }
