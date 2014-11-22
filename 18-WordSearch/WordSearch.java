@@ -1,3 +1,5 @@
+import java.util.*;
+import java.io.*;
 /**
  * Creates a word search puzzle
 paired with Leon Cheng
@@ -6,6 +8,7 @@ all good so far!!
  */
 public class WordSearch{
     
+    Random r  =  new Random();
     private char[][] board;
     
     public WordSearch(int r, int c){
@@ -31,144 +34,190 @@ public class WordSearch{
 	}
 	return s;
     }
-
-    /* with _F it means in the forward word direction/orientation */
-    public boolean canAdd_F(String w , int row, int col) {
-	boolean ans = true; 
-	int x = row;
-	int y = col;
-	try{
-	    for(int i =0;i<w.length();i++) {
-		ans = (ans && ( (board[x][y] == '.')||( board[x][y]==w.charAt(i) )  )    );
-		y++;
-	    }
-	    
-
-	    return ans;}
-	
-	catch(Exception e) {return false;}
-    }
-    public void addWordH_F(String w,int row, int col){
-	int r = row, c = col;
-	if (  (canAdd_F(w,row,col)) ) {
+    
+    public void insert(String w, int row, int col, int rowChange, int colChange){
+	if (insertCheck(w,row,col,rowChange,colChange)){
 	    for (int i=0;i<w.length();i++){
-		board[r][c] = w.charAt(i);
-		c++;
+		board[row][col] = w.charAt(i);
+		row += rowChange;
+		col += colChange;
 	    }
-	}
+	}	
     }
     
-        /* with _B it means in the backward word direction/orientation */
-
-    public boolean canAdd_B(String w , int row, int col) {
-	boolean ans = true; 
-	int x = row;
-	int y = col;
-	try{
-	    for(int i =0;i<w.length();i++) {
-		ans = (ans && ( (board[x][y] == '.')||( board[x][y]==w.charAt(i) )  )    );
-		y--;
+    public boolean insertCheck(String w, int row, int col, int rowChange, int colChange){
+	int r = row;
+	int c = col;
+	boolean ans=true;
+	try {
+	    for (int i=0;i<w.length();i++){
+		ans = ans && (board[r][c]=='.' || board[r][c] == w.charAt(i));
+		//	System.out.println("coordinates: "+r+","+c+ans);
+		r+=rowChange;
+		c+=colChange;
 	    }
+	}catch (Exception e) {return false;}
+	return ans;
+    }
+    //18c
+    public boolean addWord(String w) {
+	boolean ans = true;
+	int tries  = 0 ;
+	while (tries <5){
+	    int type = r.nextInt(8);
+	    int a = r.nextInt(board.length);
+	    int b = r.nextInt(board[0].length);
+	    if (type == 0){
+		insert(w , a , b , 0 , 1);}
+	    if (type == 1){
+		insert(w , a , b , 0 , -1);}
+	    if (type == 2){
+		insert(w , a , b , 1 , 0);}
+	    if (type == 3){
+		insert(w , a , b , -1 ,0);}
+	    if (type == 4){
+		insert(w , a , b , 1 , 1);}
+	    if (type == 5){
+		insert(w , a , b , -1 , -1);}
+	    if (type == 6){
+		insert(w , a , b ,-1 , 1);}
+	    if (type == 7){
+		insert(w , a , b , 1 , -1);}
+	    tries++;
+	}
+	if (tries == 6) {return false;}
+	return true;
+    }
+    
+    // /* with _F it means in the forward word direction/orientation */
+    // public boolean canAdd_F(String w , int row, int col) {
+    // 	boolean ans = true; 
+    // 	int x = row;
+    // 	int y = col;
+    // 	try{
+    // 	    for(int i =0;i<w.length();i++) {
+    // 		ans = (ans && ( (board[x][y] == '.')||( board[x][y]==w.charAt(i) )  )    );
+    // 		y++;
+    // 	    }
 	    
 
-	    return ans;}
+    // 	    return ans;}
 	
-	catch(Exception e) {return false;}
-    }
-    public void addWordH_B(String w,int row, int col){
-	int r = row, c = col;
-	if (  (canAdd_F(w,row,col)) ) {
-	    for (int i=0;i<w.length();i++){
-		board[r][c] = w.charAt(i);
-		c--;
-	    }
-	}
-    }
+    // 	catch(Exception e) {return false;}
+    // }
+    // public void addWordH_F(String w,int row, int col){
+    // 	int r = row, c = col;
+    // 	if (  (canAdd_F(w,row,col)) ) {
+    // 	    for (int i=0;i<w.length();i++){
+    // 		board[r][c] = w.charAt(i);
+    // 		c++;
+    // 	    }
+    // 	}
+    // }
+    
+    //     /* with _B it means in the backward word direction/orientation */
 
-    ///18b____________________________________________________________
-    ///_D is adding it downward
-    public boolean canAdd_D(String w , int row, int col) {
-	
-	boolean ans = true; 
-	int x = row;
-	int y = col;
-	try{
-	    for(int i =0;i<w.length();i++) {
-		ans = (ans && ( (board[x][y] == '.')||( board[x][y]==w.charAt(i) )  )    );
-		x++;
-	    }
+    // public boolean canAdd_B(String w , int row, int col) {
+    // 	boolean ans = true; 
+    // 	int x = row;
+    // 	int y = col;
+    // 	try{
+    // 	    for(int i =0;i<w.length();i++) {
+    // 		ans = (ans && ( (board[x][y] == '.')||( board[x][y]==w.charAt(i) )  )    );
+    // 		y--;
+    // 	    }
 	    
 
-	    return ans;}
+    // 	    return ans;}
 	
-	catch(Exception e) {return false;}
-    }
-    public void addWordV_D(String w,int row, int col){
-	int r = row, c = col;
-	if (  (canAdd_F(w,row,col)) ) {
-	    for (int i=0;i<w.length();i++){
-		board[r][c] = w.charAt(i);
-		r++;
-	    }
-	}
-    }
+    // 	catch(Exception e) {return false;}
+    // }
+    // public void addWordH_B(String w,int row, int col){
+    // 	int r = row, c = col;
+    // 	if (  (canAdd_F(w,row,col)) ) {
+    // 	    for (int i=0;i<w.length();i++){
+    // 		board[r][c] = w.charAt(i);
+    // 		c--;
+    // 	    }
+    // 	}
+    // }
+
+    // ///18b____________________________________________________________
+    // ///_D is adding it downward
+    // public boolean canAdd_D(String w , int row, int col) {
+	
+    // 	boolean ans = true; 
+    // 	int x = row;
+    // 	int y = col;
+    // 	try{
+    // 	    for(int i =0;i<w.length();i++) {
+    // 		ans = (ans && ( (board[x][y] == '.')||( board[x][y]==w.charAt(i) )  )    );
+    // 		x++;
+    // 	    }
+	    
+
+    // 	    return ans;}
+	
+    // 	catch(Exception e) {return false;}
+    // }
+    // public void addWordV_D(String w,int row, int col){
+    // 	int r = row, c = col;
+    // 	if (  (canAdd_F(w,row,col)) ) {
+    // 	    for (int i=0;i<w.length();i++){
+    // 		board[r][c] = w.charAt(i);
+    // 		r++;
+    // 	    }
+    // 	}
+    // }
  
 
-    //_U is adding it upwards_______________________________________
-    public boolean canAdd_U(String w, int row, int col) {
-	boolean ans = true; 
-	int x = row;
-	int y = col;
-	try{
-	    for(int i =0;i<w.length();i++) {
-		ans = (ans && ( (board[x][y] == '.')||( board[x][y]==w.charAt(i) )  )    );
-		x--;
-	    }
+    // //_U is adding it upwards_______________________________________
+    // public boolean canAdd_U(String w, int row, int col) {
+    // 	boolean ans = true; 
+    // 	int x = row;
+    // 	int y = col;
+    // 	try{
+    // 	    for(int i =0;i<w.length();i++) {
+    // 		ans = (ans && ( (board[x][y] == '.')||( board[x][y]==w.charAt(i) )  )    );
+    // 		x--;
+    // 	    }
 	    
 
-	    return ans;}
+    // 	    return ans;}
 	
-	catch(Exception e) {return false;}
-    }
-    public void addWordV_U(String w,int row, int col){
-	int r = row, c = col;
-	if (  (canAdd_F(w,row,col)) ) {
-	    for (int i=0;i<w.length();i++){
-		board[r][c] = w.charAt(i);
-		r--;
-	    }
-	}
-    }
+    // 	catch(Exception e) {return false;}
+    // }
+    // public void addWordV_U(String w,int row, int col){
+    // 	int r = row, c = col;
+    // 	if (  (canAdd_F(w,row,col)) ) {
+    // 	    for (int i=0;i<w.length();i++){
+    // 		board[r][c] = w.charAt(i);
+    // 		r--;
+    // 	    }
+    // 	}
+    // }
  
 
     public static void main(String[] args) {
 	WordSearch w = new WordSearch();
 	System.out.println(w);
 	System.out.println("before------");
-	//forward
-	w.addWordH_F("hello",3,5);
-	w.addWordH_F("porcupine",9,0);
-	w.addWordH_F("smash",2,1);
-	w.addWordH_F("brothers",2,6);
-	w.addWordH_F("alabama",5,0);
-	w.addWordH_F("mammal",5,5);
 
-	w.addWordH_F("look",3,8);//should change nothing
-	w.addWordH_F("look",3,5);//is legal because of similar letter placement
-	//	not working, out of index... 
-	w.addWordH_F("hello",100,5);
-	w.addWordH_F("hello",30,555);
-	//backward
-	w.addWordH_B("hello",0,9);
-	w.addWordH_B("racecar",11,20);
-	w.addWordH_B("bar" , 11,22);
-	//vertical tests
-	w.addWordV_U("plank",10,0);
-	w.addWordV_D("Stuyvesant",0,19);
-	w.addWordV_D("BxSci",0,19);
-	w.addWordV_D("wannabe",8,4);
-	
+	w.insert("bar" , 10,22,1,1);
+	w.insert("bar", 15,22,1,-1);
+	w.insert("bar",15,22,1,1);
+	w.insert("bar",15,22,-1,0);
+	w.insert("bar",15,22,0,-1);
+	w.insert("friday",12,2,1,1);
+	w.insert("porpoise",8,0,1,0);
+	w.insert("porpoise",9,0,1,0);
+	w.insert("plum",9,0,-1,0);
+	w.insert("plum",8,20,0,-1);
+	w.insert("racecar",8,7,0,1);
+	w.insert("smash",2,1,0,1);
+	w.insert("brothers",2,6,0,1);
+	System.out.println(w.addWord("zzzzzzz"));
 	System.out.println(w);
-	System.out.println("after--------------");
+
     }
 }
