@@ -28,7 +28,7 @@ public class WordSearch{
 	String s = "";
 	for (int i = 0; i < board.length; i++) {
 	    for (int j = 0; j < board[i].length; j++) {
-		s = s + board[i][j];
+		s = s + board[i][j] +" ";
 	    }
 	    s = s + "\n";
 	}
@@ -61,32 +61,42 @@ public class WordSearch{
     }
     //18c
     public boolean addWord(String w) {
-	boolean ans = true;
+	boolean ans = false;
 	int tries  = 0 ;
 	while (tries <5){
 	    int type = r.nextInt(8);
 	    int a = r.nextInt(board.length);
 	    int b = r.nextInt(board[0].length);
-	    if (type == 0){
-		insert(w , a , b , 0 , 1);}
-	    if (type == 1){
-		insert(w , a , b , 0 , -1);}
-	    if (type == 2){
-		insert(w , a , b , 1 , 0);}
-	    if (type == 3){
-		insert(w , a , b , -1 ,0);}
-	    if (type == 4){
-		insert(w , a , b , 1 , 1);}
-	    if (type == 5){
-		insert(w , a , b , -1 , -1);}
-	    if (type == 6){
-		insert(w , a , b ,-1 , 1);}
-	    if (type == 7){
-		insert(w , a , b , 1 , -1);}
+	    if (type == 0 && (!(ans))&& ( insertCheck(w , a , b , 0 , 1))   ){
+		insert(w , a , b , 0 , 1);
+		ans = true;}
+
+	    else  if (type == 1 && (!(ans))&& ( insertCheck(w , a , b , 0 , -1))    ){
+		insert(w , a , b , 0 , -1);
+		ans = true;}
+	    else if (type == 2&& (!(ans)) && ( insertCheck(w , a , b , 1 , 0))){
+		insert(w , a , b , 1 , 0);
+		ans = true;}
+	    else if (type == 3 && (!(ans)) && ( insertCheck(w , a , b , -1 , 0))){
+		insert(w , a , b , -1 ,0);
+		ans = true;}
+	    else if (type == 4 && (!(ans)) && ( insertCheck(w , a , b , 1 , 1))){
+		insert(w , a , b , 1 , 1);
+		ans = true;}
+	    else if (type == 5 && (!(ans)) && ( insertCheck(w , a , b , -1 , -1))){
+		insert(w , a , b , -1 , -1);
+		ans = true;}
+	    else if (type == 6 && (!(ans)) && ( insertCheck(w , a , b , -1 , 1))){
+		insert(w , a , b ,-1 , 1);
+		ans = true;}
+	    else if (type == 7 && (!(ans))&& ( insertCheck(w , a , b , 1 , -1))){
+		insert(w , a , b , 1 , -1);
+		ans = true;}
 	    tries++;
 	}
-	if (tries == 6) {return false;}
-	return true;
+	//if (tries == 6) {return false;}
+	//return true;
+	return ans;
     }
     
 public void fillBoard(){
@@ -228,7 +238,10 @@ public void fillBoard(){
 	w.insert("racecar",8,7,0,1);
 	w.insert("smash",2,1,0,1);
 	w.insert("brothers",2,6,0,1);
-	System.out.println(w.addWord("zzzzzzz"));
+	System.out.println(w.addWord("random"));
+	System.out.println(w);
+	w.fillBoard();
+	System.out.println();
 	System.out.println(w);
 
     }
