@@ -13,6 +13,18 @@ public class WordSearch{
     
     public WordSearch(int r, int c){
 	board = new char[r][c];
+
+	words = new ArrayList<String>();
+
+	Scanner sc = null;
+
+	try {
+	    sc = Scanner(new FIle("words.text"));}
+	catch(exception e) {
+	    System.out.println("can't open wordlist");
+	    System.exit(0);
+	}
+	
 	for (int i = 0; i < board.length; i++) {
 	    for (int j = 0; j < board[i].length; j++) {
 		board[i][j]='.';
@@ -100,17 +112,24 @@ public class WordSearch{
     }
     
 public void fillBoard(){
-	Random rnd = new Random();
-	String alphabet = "qwertyuiopasdfghjklzxcvbnm";
-	for (int i=0;i<board.length;i++){
+    Random rnd = new Random();
+    String alphabet = "qwertyuiopasdfghjklzxcvbnm";
+    for (int i=0;i<board.length;i++){
 	for (int j=0;j<board[i].length;j++){
-	if (board[i][j]=='.'){
-	board[i][j] = alphabet.charAt( rnd.nextInt(alphabet.length()) );
+	    if (board[i][j]=='.'){
+		board[i][j] = alphabet.charAt( rnd.nextInt(alphabet.length()) );
+	    }
+	}
+    }
+    //System.out.println(alphabet);
 }
-}
-}
-//System.out.println(alphabet);
-} 
+
+    public void buildPuzzle(int numwords) {
+	/*loop, take random word out of wordlist, try to add to puzzle*/ 
+	
+
+    }
+			   
     // /* with _F it means in the forward word direction/orientation */
     // public boolean canAdd_F(String w , int row, int col) {
     // 	boolean ans = true; 
