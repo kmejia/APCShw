@@ -12,8 +12,17 @@ public class Sarray {
 		}
 		last = 0;
     	}
-
-    	public boolean add(String i){
+    public String toString(){
+	String s = "";
+	for (int i = 0; i < data.length; i++) {
+	    
+	    s = s + data[i] +" ";
+	    
+	    //s = s + "\n";
+	}
+	return s;
+    }
+    public boolean add(String i){
         	// adds an item to the end of the list, grow if needed
         	// returns true
 		try {
@@ -90,8 +99,8 @@ public class Sarray {
     	public String remove(int index){
         	// removes the item at index i
         	// returns the old value
-		String[] buffer = new String[size() - 1];
-		String toReturn;
+	    String[] buffer = new String[size()];//changed size
+		String toReturn="";
 		for (int i = 0; i < buffer.length; i++){
 			if (i < index){
                         	buffer[i] = data[i];
@@ -101,11 +110,33 @@ public class Sarray {
                                 toReturn = buffer[i];
                         }
                         else {
-                                buffer[i] = data[i + 1];
-                        }
+			    try{
+				buffer[i] = data[i + 1];}
+			    catch(Exception e){buffer[i]="";}
+			}
                 }
 		last--;
 		data = buffer;
 		return toReturn;
     	}
+
+    public static void main(String[] args){
+	Sarray k = new Sarray();
+	k.add("example");
+	k.add("yes");
+	k.add("falcon");
+	k.add("punch");
+	k.add(2,"switch");
+	System.out.println(k);
+	System.out.println(k.size());
+	System.out.println(k.get(1));
+	System.out.println(k.set(1,"no"));
+	System.out.println(k);
+	System.out.println(k.remove(3));
+	System.out.println(k);
+    }
+
+
+
+
 }
