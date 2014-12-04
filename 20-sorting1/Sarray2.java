@@ -147,8 +147,32 @@ public class Sarray2 {
 	}
 	return s;
     }
+//-------HW21-------------'selection sort
+//helpers
+    public String minAfter(int index){
+	String ans = data[index];
+	for (int i = index;i<this.size();i++){
+	    //System.out.println(ans);
+	    if (ans.compareTo(data[i]) > 0){
+		ans = data[i];
+	    }
+	}
+	return ans;
+    }
 
 
+    public void switch (int a , int b) {
+	String x = data[a];
+	String y = data[b];
+	data[a] = y;
+	data[b] = x;
+    }
+
+
+
+
+
+    ////--------------------------
     public static void main(String[] args) {
 	Sarray2 k = new Sarray2();
 	k.add("falcon");
@@ -156,11 +180,13 @@ public class Sarray2 {
 	k.add("zzzzz's");
 	k.add("melee");
 	System.out.println(k);
-	k.isort();
+	//k.isort();
 	System.out.println(k);
 	//for some reason givses the reverse order
 	//update, fixed
-
+	System.out.println(k.minAfter(0));
+	System.out.println("falcon".compareTo("punch"));
+	
     }
 }
 
