@@ -159,19 +159,42 @@ public class Sarray2 {
 	}
 	return ans;
     }
+    public int find(String t) {
+	for (int i = 0; i < size();i++) {
+	    if (data[i].equals(t)){return i;}
+	}
+	return -1;
+    }
 
-
-    public void switch (int a , int b) {
+    public void switchI(int a , int b) {
 	String x = data[a];
 	String y = data[b];
 	data[a] = y;
 	data[b] = x;
     }
+    //selection sort
+    public void ssort() {
+	//String[]ans = new String[size()];
+	String s;
+	for (int i = 0;i<size();i++) {
+	    s = minAfter(i);
+	    switchI( i , find(s));	    
+	}
+    }
 
-
-
-
-
+    public void bsort() {
+	int tries = 0;
+	while (tries < size())	{
+	    for (int i = 0; i < (size() - 1);i++) {
+		if (data[i+1].compareTo(data[i])<0) {
+		    switchI(i, i+1);	       		    		    
+		}
+	    }
+	    tries++;
+	}
+	
+	
+    }
     ////--------------------------
     public static void main(String[] args) {
 	Sarray2 k = new Sarray2();
@@ -181,11 +204,13 @@ public class Sarray2 {
 	k.add("melee");
 	System.out.println(k);
 	//k.isort();
+	//k.ssort();
+	k.bsort();
 	System.out.println(k);
 	//for some reason givses the reverse order
 	//update, fixed
-	System.out.println(k.minAfter(0));
-	System.out.println("falcon".compareTo("punch"));
+	//System.out.println(k.minAfter(0));
+	//System.out.println("falcon".compareTo("punch"));
 	
     }
 }
