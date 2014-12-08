@@ -195,6 +195,16 @@ public class Sarray2 {
 	
 	
     }
+    ////-------------------------
+    /*efficiency questions 
+for an array  of n elements, all of then have an initial loop of n times
+-isort inserts n elements n times : its time is n^2
+-ssort hat to loop to find n minimun values from n elements and then inserts them in one step. When it find the next min, lets say, the second min, it uses an array of n - 1 elements, this makes the time n!
+-bsort bubbles through n times to move a possible n elements: at most its n^2 times
+--this probably makes ssort the least time efficient, and most costly due to runtimes for constantly calculating min values
+
+
+    */
     ////--------------------------
     public static void main(String[] args) {
 	Sarray2 k = new Sarray2();
