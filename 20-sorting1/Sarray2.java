@@ -1,7 +1,10 @@
+import java.io.*;
+import java.util.*;
 public class Sarray2 {
-    	String[] data;//the larger array aka the entire data
-    	int last;// will at most be the length of data set
-
+    String[] data;//the larger array aka the entire data
+    int last;// will at most be the length of data set
+    String[] copy;
+    Random r = new Random();
     	public Sarray2() {
         	// set up the initial instance variables
 		data = new String[16];
@@ -9,6 +12,7 @@ public class Sarray2 {
 		for (int i = 0; i < data.length; i++){
 			data[i] = "";
 		}
+		copy = data;
 		last = 0;
     	}
 
@@ -196,10 +200,7 @@ public class Sarray2 {
 	
     }
 
-    public void sort() {
 
-	
-    }
     ////-------------------------
     /*efficiency questions 
 for an array  of n elements, all of then have an initial loop of n times
@@ -209,8 +210,60 @@ for an array  of n elements, all of then have an initial loop of n times
 --this probably makes ssort the least time efficient, and most costly due to runtimes for constantly calculating min values
 
 
+
+insertion sort time = 43196
+selection sort time = 34557,selection sort takes a bit longer, probably due to dealing with a smaller set each loop
+bubble sort time = 42116
+
+
+
+
     */
     ////--------------------------
+
+
+
+
+    public void fill(){
+	for (int i = 0; i < data.length; i++) {
+	    data[i]=r.nextInt(100) +"";
+	}
+    }
+    
+    public void backup() {
+	for (int i = 0; i < data.length; i++) {
+	    copy[i] = data[i];
+	}
+    }
+    public void restore() {
+	for (int i = 0; i < data.length; i++) {
+	    data[i] = copy[i];
+	}
+    }    
+    public void builtin() {
+
+	Arrays.sort(data);
+    }
+    public void CheckTime() {
+	backup();
+	long startT = System.nanoTime();
+	isort();
+	long endT = System.nanoTime();
+	System.out.println("insertion sort time = " + ( endT - startT));
+	restore();
+	backup();
+	long startT1 = System.nanoTime();
+	ssort();
+	long endT1 = System.nanoTime();
+	System.out.println("selection sort time = " + ( endT1 - startT1)); 
+	restore();
+	backup();
+	long startT2 = System.nanoTime();
+	bsort();
+	long endT2 = System.nanoTime();
+	System.out.println("bubble sort time = " + ( endT2 - startT2));
+
+    }
     public static void main(String[] args) {
 	Sarray2 k = new Sarray2();
 	k.add("falcon");
@@ -226,7 +279,7 @@ for an array  of n elements, all of then have an initial loop of n times
 	//update, fixed
 	//System.out.println(k.minAfter(0));
 	//System.out.println("falcon".compareTo("punch"));
-	
+	k.CheckTime();
     }
 }
 
