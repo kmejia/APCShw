@@ -3,10 +3,11 @@ import java.io.*;
 public class Interval {
     private int low;
     private int high;
+    private static Random r = new Random();
+    private static int numIntervals = 0;
     public Interval() {
         
 	boolean check = false;
-	Random r = new Random();
 	low  = r.nextInt(100);
 	while (check ==false) {
 	    int x = r.nextInt(100);
