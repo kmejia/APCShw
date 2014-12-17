@@ -1,15 +1,20 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class Gui1 extends JFrame {
-
+public class Gui2 extends JFrame implements ActionListener {
+    
     private Container pane;
     private JButton b1,b2;
     private JLabel l;
     private JTextArea text;
     private JPanel canvas;
     
-    public Gui1(){
+    public void actionPerformed(ActionEvent e) {
+	
+    }
+    
+    public Gui2(){
 	
 	setTitle("My First Gui");
 	setSize(600,600);
@@ -31,33 +36,16 @@ public class Gui1 extends JFrame {
 	text.setRows(10);
 	text.setBorder(BorderFactory.createLineBorder(Color.red,2));
 	pane.add(text);
-
+	
 	canvas = new JPanel();
-				canvas.setPreferredSize(new Dimension(300,300));
-				canvas.setBorder(BorderFactory.createLineBorder(Color.blue,2));
-				pane.add(canvas);
-				
-				/* 
-				   add more buttons and add a new grid of 6 buttons to the 
-				   bigger grid box
-				   pane.add(new JButton("hello1"));
-				   pane.add(new JButton("hello2"));
-				   pane.add(new JButton("hello3"));
-				   JPanel f2 = new JPanel();
-				   pane.add(f2);
-				   f2.setLayout(new GridLayout(3,3));
-				   f2.add(new JButton("aaa"));
-				   f2.add(new JButton("aaa"));
-				   f2.add(new JButton("aaa"));
-				   f2.add(new JButton("aaa"));
-				   f2.add(new JButton("aaa"));
-				   f2.add(new JButton("aaa"));
-				*/
-				
+	canvas.setPreferredSize(new Dimension(300,300));
+	canvas.setBorder(BorderFactory.createLineBorder(Color.blue,2));
+	pane.add(canvas);
+	
     }
     
     public static void main(String[] args) {
-	Gui1 f = new Gui1();
+	Gui2 f = new Gui2();
 	f.setVisible(true);
     }
 }
