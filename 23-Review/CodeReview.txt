@@ -1,0 +1,26 @@
+Code Review Kevin Mejia
+https://github.com/blehw/apcs-finalproj/tree/master/pokemon
+
+The glaring issue that I see here is that there is no Driver preset. We were
+specifically told to have Driver to access the entire working project, so as of now things wont seem to run fully 
+. From what I can tell this is is a take on the turn based game Pokemon against an AI opponent, 
+where type such as fire and water play a role in dealing damage as well as the type oof movee such as tackle.
+
+-- BaseChar.java 3
+Why not make BaseChar an abstact class? All of the pokemon used in Battle.java ayway are going
+to be specific subclasses. I would suggest doing so just to make sure you dont call this by accident.
+
+--BaseChar.java 16
+I personally know what PP stands for in the Poke-universe, but it would hurt to add comment
+for it because it affects the outcome of every turn. 
+
+--Battle.java 72-86
+isnt it better just to initialize the array and acces it right away with a getArray or something?
+--Battle.java 67
+Its safer to use "else if" when inputting a random integer. It would be trouble otherwise.
+
+--Battle.java 9
+Maybe this is incomplete but maybe make it so that Squirtle is the pokemon by default, but that can be changed.
+
+--Fire.java
+this can also be an abstract class
